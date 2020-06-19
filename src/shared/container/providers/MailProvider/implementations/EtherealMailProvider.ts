@@ -5,7 +5,7 @@ import IMailTemplateProvider from '@shared/container/providers/MailTemplateProvi
 import IMailProvider from '../models/IMailProvider';
 import ISendMailDTO from '../dtos/ISendMailDTO';
 
-injectable();
+@injectable()
 class EtherealMailProvider implements IMailProvider {
   private client: Transporter;
 
