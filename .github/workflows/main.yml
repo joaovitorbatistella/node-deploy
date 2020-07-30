@@ -24,7 +24,7 @@ jobs:
     - name: Run build
       run: yarn build
       
-    # Copiar pasta dist para dentro da Digital Ocean
+    # Copiar o código para a Digital Ocean
     - name: Copy dist to Digital Ocean
       uses: appleboy/scp-action@master
       with:
@@ -32,10 +32,9 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         port: ${{ secrets.SSH_PORT }}
         key: ${{ secrets.SSH_KEY }}
-        source: "."
+        source: ".,!node_modules"
         target: "~/app/node-deploy"    
       
-    # Substituir o código existente na pasta "dist" pelo novo código
     # Executar "yarn" na Digital Ocenas
     # Executar as migrations do TypeORM
     # Restart no servidor Node.js
